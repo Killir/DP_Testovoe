@@ -20,9 +20,9 @@ public class LetterButton : MonoBehaviour
         button.interactable = false;
     }
 
-    public void SetIteractable()
+    public void SetIteractable(bool value)
     {
-        button.interactable = true;
+        button.interactable = value;
     }
 
 }

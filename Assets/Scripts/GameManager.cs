@@ -44,10 +44,8 @@ public class GameManager : MonoBehaviour
         foreach (Letter l in letters) {
             l.gameObject.SetActive(false);
         }
-        foreach (LetterButton lb in letterButtons) {
-            lb.SetIteractable();
-        }
 
+        SetButtonsInteractable(true);
         for (int i = 0; i < word.Length; i++) {
             letters[i].gameObject.SetActive(true);
             letters[i].InitLetter(word[i]);
@@ -58,11 +56,13 @@ public class GameManager : MonoBehaviour
 
     void Win()
     {
+        SetButtonsInteractable(false);
         UIManager.instance.ShowWinScreen();
     }
 
     void GameOver()
     {
+        SetButtonsInteractable(false);
         UIManager.instance.ShowGameOverScreen();
     }
 
@@ -117,6 +117,13 @@ public class GameManager : MonoBehaviour
             GameOver();
         }
 
+    }
+
+    void SetButtonsInteractable(bool value)
+    {
+        foreach (LetterButton lb in letterButtons) {
+            lb.SetIteractable(value);
+        }
     }
 
     void SetScore(int value)
